@@ -16,20 +16,20 @@ struct KsiazkaAdresowa
 };
 
 int zaladujKsiazkeAdresowa(KsiazkaAdresowa L []);
-int dodajOsobe (KsiazkaAdresowa osoba [], int ilosc); // Tu sie wysyla tylko nazwe struktury??
+int dodajOsobe (KsiazkaAdresowa osoba [], int ilosc);
 void wyswietlanieZawartosciKsiazkiAdresowej (KsiazkaAdresowa A [], int n);
-void znajdzZnajomego (KsiazkaAdresowa Z [], int n, string c);
+void znajdzImieZnajomego (KsiazkaAdresowa Z [], int n);
+void znajdzNazwiskoZnajomego (KsiazkaAdresowa Z [], int n);
 string pierwszaLitera (string p);
 
 int main()
 {
-    KsiazkaAdresowa znajomi [1000]; // Tworzenie tablicy w strukturze Ksiazka
+    KsiazkaAdresowa znajomi [1000];
     int iloscOsob = zaladujKsiazkeAdresowa(znajomi);
     string wybor;
     string wybor_2 = "0";
-    string imieCzyNazwisko;
 
-    do
+    while (true)
     {
         if (wybor_2 =="0")
         {
@@ -43,62 +43,60 @@ int main()
 
             if (wybor =="1")
             {
-                iloscOsob = dodajOsobe(znajomi, iloscOsob); // Tu siê wysy³a tylko nazwe tablicy??
-            }   // Koniec zapytania if
+                iloscOsob = dodajOsobe(znajomi, iloscOsob);
+            }   // if
 
             else if (wybor =="2")
             {
                 system("cls");
                 cout << "1. Wyszukiwanie po imieniu" << endl;
                 cout << "2. Wyszukiwanie po nazwisku" << endl;
-                cout << "3. Powrot do menu głownego" << endl;
+                cout << "3. Powrot do menu glownego" << endl;
                 cin >> wybor_2;
 
                 if (wybor_2 =="1")
                 {
-                    imieCzyNazwisko = "imie" ;
-                    znajdzZnajomego (znajomi, iloscOsob, imieCzyNazwisko);
+                    znajdzImieZnajomego (znajomi, iloscOsob);
                     wybor_2 = "0";
-                }   // Koniec zapytania if
+                }   // if
                 else if (wybor_2 =="2")
                 {
-                    imieCzyNazwisko = "nazwisko" ;
-                    znajdzZnajomego (znajomi, iloscOsob, imieCzyNazwisko);
+                    znajdzNazwiskoZnajomego (znajomi, iloscOsob);
                     wybor_2 = "0";
-                }   // Koniec zapytania else if
+                }   // else if
                 else if (wybor_2 =="3")
                 {
                     wybor_2 = "0";
-                }   // Koniec zapytania else if
+                }   // else if
 
                 else
                 {
                     cout << "Nie ma takiej opcji";
                     Sleep (1000) ;
                     wybor_2 = "0";
-                }   // Koniec zapytania else if
+                }   // else if
 
-            }   // Koniec zapytania else if
+            }   // else if
 
             else if (wybor =="3")
             {
                 wyswietlanieZawartosciKsiazkiAdresowej (znajomi, iloscOsob);
-            }   // Koniec zapytania else if
+            }   // else if
 
             else if (wybor =="4")
             {
                 exit (0);
-            }   // Koniec zapytania else if
+            }   // else if
 
             else
             {
                 cout << "Nie ma takiej opcji";
                 Sleep (1000) ;
-            }   // Koniec zapytania else if
-        }   // Koniec zapytania if
-    }   // Koniec petli while
+            }   // else if
+        }   // if
+    }   // while
     return 0;
-}   // Koniec czesci glownej main
+}   // main
 
 int zaladujKsiazkeAdresowa(KsiazkaAdresowa L [])
 {
@@ -118,16 +116,16 @@ int zaladujKsiazkeAdresowa(KsiazkaAdresowa L [])
            case 4: L[j].telefon = linia ;  break;
            case 5: L[j].email = linia ;   break;
            case 6: L[j].adres = linia ;    break;
-       };    // Koniec wyrazenia switch
+       };    // switch
 
-       if (nr_linii == 6) {nr_linii = 0; j++;} // Cala petla wykonuje sie prawidlowoa ilosc razy
+       if (nr_linii == 6) {nr_linii = 0; j++;}
 
        nr_linii++ ;
-    }   // Koniec petli while
+    }   // while
 
     skorowidz.close () ;
     return j;
-}   // Koniec funkcji zaladujKsiazkeAdresowa
+}   // zaladujKsiazkeAdresowa
 
 int dodajOsobe (KsiazkaAdresowa osoba [], int ilosc)
 {
@@ -135,16 +133,15 @@ int dodajOsobe (KsiazkaAdresowa osoba [], int ilosc)
     int numer;
     system("cls");
 
-    numer = ilosc + 1; // Usalanie numeru porzadkowego osoby
+    numer = ilosc + 1;
 
-    // Pobranie kolejnych danych znajomego
     cout << "Podaj imie znajomego: ";
     cin >> imie;
     cout << "Podaj nazwisko znajomego";
     cin >> nazwisko;
     cout << "Podaj telefon znajomego";
-    cin.sync (); // Oproznianie buforu - chyba chodzi o szufladke bierzaca
-    getline(cin, telefon); // Wczytuje razem ze spacjami
+    cin.sync ();
+    getline(cin, telefon);
     cout << "Podaj email znajomego";
     cin >> email;
     cout << "Podaj adres znajomego";
@@ -160,7 +157,7 @@ int dodajOsobe (KsiazkaAdresowa osoba [], int ilosc)
     osoba[ilosc].adres = adres;
 
     // Dodanie osoby do pliku
-    fstream notatnik; // Deklaracja pliku
+    fstream notatnik;
     notatnik.open("Ksiazka_Adresowa.txt", ios::out | ios::app);
     if (notatnik.good())
     {
@@ -174,24 +171,21 @@ int dodajOsobe (KsiazkaAdresowa osoba [], int ilosc)
         notatnik.close ();
         cout << "Osoba zostala dodana" << endl;
         Sleep (1000);
-    }   // Koniec zapytania if
+    }   // if
 
     else cout << "Nie mozna odnalezc pliku, osoba niezapisana" << endl;
 
     ilosc ++;
     return ilosc;
-}   // Koniec funkcji dodajOsobe
+}   // dodajOsobe
 
-void znajdzZnajomego (KsiazkaAdresowa Z [], int n, string c)
+void znajdzImieZnajomego (KsiazkaAdresowa Z [], int n)
 {
     string f;
     cout << "Wpisz szukana fraze: " << endl;
     cin >> f;
     f = pierwszaLitera (f);
-    int l = 0 ; //Bedzie pokazywalo ile osob jest o tym imieniu
-
-    if(c == "imie")
-    {
+    int l = 0 ;
     for (int i=0; i<n; i++)
     {
         if (Z[i].imie == f)
@@ -204,11 +198,27 @@ void znajdzZnajomego (KsiazkaAdresowa Z [], int n, string c)
             cout << "Adres znajomego: " << Z[i].adres << endl;
             cout << endl;
             l++;
-        }   // Koniec zapytania if
-    }   // Koniec petli for
-    }   // Koniec duzego if
-    else
+        }   // if
+    }   // for
+
+    if (l==0)
     {
+        cout << "Brak znajomych o tym imieniu" << endl;
+        Sleep (1000);
+    }   // if
+
+    cout << "Wcisnij enter" ;
+    cin.sync ();
+    getchar();
+}   // znajdzImieZnajomego
+
+void znajdzNazwiskoZnajomego (KsiazkaAdresowa Z [], int n)
+{
+    string f;
+    cout << "Wpisz szukana fraze: " << endl;
+    cin >> f;
+    f = pierwszaLitera (f);
+    int l = 0;
     for (int i=0; i<n; i++)
     {
         if (Z[i].nazwisko == f)
@@ -221,20 +231,19 @@ void znajdzZnajomego (KsiazkaAdresowa Z [], int n, string c)
             cout << "Adres znajomego: " << Z[i].adres << endl;
             cout << endl;
             l++;
-        }   // Koniec zapytania if
-    }   // Koniec petli for
-    }   // Koniec duzego else
+        }   // if
+    }   // for
 
-    if (l==0)
+    if (l == 0)
     {
-        cout << "Brak znajomych dla wyszukania: " << c <<" - " << f << endl;
+        cout << "Brak znajomych o tym nazwisku" << endl;
         Sleep (1000);
-    }   // Koniec zapytania if
+    }   // if
 
     cout << "Wcisnij enter" ;
     cin.sync ();
     getchar();
-}   // Koniec funkcji znajdzImieZnajomego
+}   // znajdzNazwiskoZnajomego
 
 string pierwszaLitera (string p)
 {
@@ -245,7 +254,7 @@ string pierwszaLitera (string p)
     string bez = p.erase (0,1);
     string duze = litera + bez;
     return duze;
-}   // Koniec funkcji pierwszaLitera
+}   // pierwszaLitera
 
 void wyswietlanieZawartosciKsiazkiAdresowej (KsiazkaAdresowa A [], int n)
 {
@@ -259,13 +268,13 @@ void wyswietlanieZawartosciKsiazkiAdresowej (KsiazkaAdresowa A [], int n)
             cout << "Email " << i+1 << " znajomego: " << A[i].email << endl;
             cout << "Adres " << i+1 << " znajomego: " << A[i].adres << endl;
             cout << endl;
-        }   // Koniec petli for
+        }   // for
 
         cout << "Wcisnij enter" ;
         cin.sync ();
         getchar();
-    }   // Koniec zapytania if
+    }   // if
 
     else cout << "Brak znajomych w bazie" << endl;
     Sleep (1000);
-}   // Koniec funkcji wyswietlaniwZawartosci KsiazkiAdresowej
+}   // wyswietlaniwZawartosciKsiazkiAdresowej

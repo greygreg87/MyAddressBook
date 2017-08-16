@@ -2,23 +2,23 @@
 Adam
 Styczen
 111
-adam
+adam@gmail.com
 Prusa 22
 2
 Stanislaw
 Luty
 222
-stasek
+stas@gmail.com
 Mickiewicza 2
 3
 Stefan
 Maj
 555
-oppo
+stefcio@gmail.com
 Slowackiego 9
 4
 Stefan
 Burak
 555
-stefcio@gmail.com
+stefan@gmail.com
 Prusa 45
