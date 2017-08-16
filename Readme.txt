@@ -1,5 +1,5 @@
-Skorowidz (ksi¹¿ka adresowa) korzysta z zewnêtrznego pliku txt, w którym znajduj¹ siê dane kontaktowe do znajomych. Program oferuje nastêpuj¹ce funkcjonalnoœci:
-- dodawanie kolejnych znajomych z trwa³ym zapisem ich w pliku txt,
-- wyszukiwanie znajomych po imieniu lub po nazwisku,
-- wyœwietlanie listy znajomych
+Skorowidz (ksiÄ…Å¼ka adresowa) korzysta z zewnÄ™trznego pliku txt, w ktÃ³rym znajdujÄ… siÄ™ dane kontaktowe do znajomych. Program oferuje nastÄ™pujÄ…ce funkcjonalnoÅ›ci:
+- dodawanie kolejnych znajomych z trwaÅ‚ym zapisem ich w pliku txt,
+- wyszukiwanie znajomych po imieniu lub po nazwisku (dziaÅ‚a niezaleÅ¼nie od wielkoÅ›ci pierwszej litery),
+- wyÅ›wietlanie listy znajomych
 
