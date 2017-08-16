@@ -1,0 +1,24 @@
+1
+Adam
+Styczen
+111
+adam
+Prusa 22
+2
+Stanislaw
+Luty
+222
+stasek
+Mickiewicza 2
+3
+Stefan
+Maj
+555
+oppo
+Slowackiego 9
+4
+Stefan
+Burak
+555
+stefcio@gmail.com
+Prusa 45
